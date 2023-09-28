@@ -5,10 +5,13 @@ using UnityEngine.UIElements;
 
 public class CylindralBehavior : MonoBehaviour
 {
+    Rigidbody myRB;
+
+    
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3 (0, 7, 0);
+       myRB = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -16,10 +19,14 @@ public class CylindralBehavior : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Z))
         {
-            transform.position += Vector3.forward * Time.deltaTime;     
+            myRB.AddForce(transform.forward);
+
+            transform.position += transform.forward * Time.deltaTime;     
         }
         if (Input.GetKey(KeyCode.X))
         {
+           myRB.AddExplosionForce(10,transform.position + Vector3.down,5);
+
             transform.Rotate(Vector3.up,90 * Time.deltaTime);
         }
 
