@@ -21,13 +21,13 @@ public class CylindralBehavior : MonoBehaviour
         {
             myRB.AddForce(transform.forward);
 
-         //   transform.position += transform.forward * Time.deltaTime;     
+            transform.position += transform.forward * Time.deltaTime;     
         }
         if (Input.GetKey(KeyCode.X))
         {
            myRB.AddExplosionForce(10,transform.position + Vector3.down,5);
 
-         //   transform.Rotate(Vector3.up,90 * Time.deltaTime);
+            transform.Rotate(Vector3.up,90 * Time.deltaTime);
         }
 
     }
