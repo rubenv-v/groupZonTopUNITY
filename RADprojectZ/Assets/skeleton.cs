@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,6 +17,12 @@ public class skeleton : MonoBehaviour
 #pragma warning restore CS0414 // The field 'skeleton.runningSpeed' is assigned but its value is never used
     private float turningSpeed = 180;
     Animator myAnimator;
+
+    private static object GetDebuggerDisplay()
+    {
+        throw new NotImplementedException();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,11 +38,12 @@ public class skeleton : MonoBehaviour
         myAnimator.SetBool("isRun", false);
 
         if (Input.GetKey(KeyCode.W))
-
-            // rb.AddForce(tr.forward);
+        {
             tr.position += currentspeed * tr.forward * Time.deltaTime;
+        }
+
         myAnimator.SetBool("isRun", true);
-        tr.position -= currentspeed * tr.forward * Time.deltaTime;
+  
 
         if (Input.GetKey(KeyCode.A))
         {
@@ -46,7 +54,7 @@ public class skeleton : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
 
-            tr.Rotate(Vector3.up, turningSpeed * Time.deltaTime);
+            tr.Rotate(Vector3.down, turningSpeed * Time.deltaTime);
 
         }
 
@@ -59,4 +67,5 @@ public class skeleton : MonoBehaviour
             mySnowball.ImThrowingYou(this);
         }
     
+}
 }
